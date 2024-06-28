@@ -1,0 +1,8 @@
+.account {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--padding-small);
+  &__page {
+    flex: 1 1 600px;
+  }
+}

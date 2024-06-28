@@ -1,0 +1,62 @@
+@import '@/styles/tools/mixins';
+
+.reviews-item {
+  border-radius: 10px;
+  background: var(--clr-background);
+  padding: 15px;
+  &__top {
+    display: flex;
+    gap: 10px;
+  }
+  &__details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+  }
+  &__image-container {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  &__image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  &__author {
+    text-align: center;
+    font-weight: var(--fw-medium);
+    color: var(--clr-primary);
+  }
+  &__date {
+    color: var(--clr-gray-light);
+    font-size: var(--fs-secondary);
+  }
+  &__text {
+    padding: 10px 10px 0px;
+  }
+}
+
+@include adaptation('phone-wide', max) {
+  .reviews-item {
+    &__details {
+      flex-direction: column;
+    }
+    &__info {
+      align-items: center;
+    }
+    &__date {
+      position: absolute;
+      bottom: 15px;
+      left: 10px;
+    }
+  }
+}

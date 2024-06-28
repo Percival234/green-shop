@@ -1,0 +1,8 @@
+.details {
+  display: grid;
+  gap: 20px;
+  &__detail {
+    display: grid;
+    gap: 10px;
+  }
+}

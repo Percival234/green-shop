@@ -1,0 +1,60 @@
+@import '@/styles/tools/mixins.scss';
+
+.filter {
+  width: minmax(300px, 100%);
+  background: var(--clr-background);
+  padding: 20px;
+  display: grid;
+  gap: 20px;
+  border-radius: 8px;
+  &__form {
+    display: grid;
+    gap: 8px;
+  }
+  &__item {
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+    font-size: var(--fs-item-title);
+  }
+  &__label {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      color: var(--clr-primary);
+    }
+  }
+  &__checkbox:checked ~ .filter__label {
+    color: var(--clr-primary-dark);
+    font-weight: var(--fw-medium);
+  }
+  &__double-range {
+    position: relative;
+    height: 20px;
+  }
+  &__slider-track {
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
+  }
+  &__price {
+    color: var(--clr-primary);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-item-title);
+  }
+}
+
+@include adaptation('tablet') {
+  .filter__button {
+    display: none;
+  }
+}

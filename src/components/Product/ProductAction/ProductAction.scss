@@ -1,0 +1,28 @@
+@import '@/styles/tools/mixins.scss';
+
+.product-action {
+  margin: 15px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  &__buttons {
+    gap: 10px;
+    display: flex;
+  }
+  &__counter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  &__counter-count {
+    font-size: 24px;
+    width: 3ch;
+    text-align: center;
+  }
+}
+
+@include adaptation('tablet-wide', max) {
+  .product-action {
+    justify-content: center;
+  }
+}

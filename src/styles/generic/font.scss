@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'Cera Pro';
+  src: url('@/assets/fonts/CeraPro-Regular.eot');
+  src: local('@/assets/fonts/Cera Pro Regular'), local('@/assets/fonts/CeraPro-Regular'),
+    url('@/assets/fonts/CeraPro-Regular.eot?#iefix') format('embedded-opentype'),
+    url('@/assets/fonts/CeraPro-Regular.woff') format('woff'),
+    url('@/assets/fonts/CeraPro-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cera Pro';
+  src: url('@/assets/fonts/CeraPro-Medium.eot');
+  src: local('@/assets/fonts/Cera Pro Medium'), local('@/assets/fonts/CeraPro-Medium'),
+    url('@/assets/fonts/CeraPro-Medium.eot?#iefix') format('embedded-opentype'),
+    url('@/assets/fonts/CeraPro-Medium.woff') format('woff'),
+    url('@/assets/fonts/CeraPro-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cera Pro';
+  src: url('@/assets/fonts/CeraPro-Bold.eot');
+  src: local('@/assets/fonts/Cera Pro Bold'), local('@/assets/fonts/CeraPro-Bold'),
+    url('@/assets/fonts/CeraPro-Bold.eot?#iefix') format('embedded-opentype'),
+    url('@/assets/fonts/CeraPro-Bold.woff') format('woff'),
+    url('@/assets/fonts/CeraPro-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}

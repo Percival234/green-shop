@@ -1,0 +1,27 @@
+.payment {
+  &__list {
+    display: grid;
+    gap: 15px;
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0px 15px;
+    min-height: 50px;
+    border: 2px solid var(--clr-primary-light);
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: var(--fw-medium);
+    transition: 0.2s;
+    &:hover,
+    &:active,
+    &.active {
+      color: var(--clr-primary);
+      border-color: var(--clr-primary);
+    }
+  }
+  &__input {
+    accent-color: var(--clr-primary);
+  }
+}

@@ -1,0 +1,29 @@
+.item-title {
+  text-transform: capitalize;
+}
+
+.title-border {
+  width: 100%;
+  padding: 10px 0px;
+  border-bottom: 2px solid var(--clr-primary-light);
+  font-weight: var(--fw-bold);
+  text-transform: capitalize;
+  white-space: nowrap;
+  margin-bottom: 20px;
+}
+
+.title-size-large {
+  font-size: var(--fs-title);
+}
+
+.title-size-medium {
+  font-size: var(--fs-sub-title);
+}
+
+.title-size-small {
+  font-size: var(--fs-item-title);
+}
+
+.centered {
+  text-align: center;
+}

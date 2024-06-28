@@ -1,0 +1,21 @@
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  &__stars {
+    display: flex;
+    gap: 1px;
+    position: relative;
+    color: var(--clr-orange);
+  }
+  &__overlay {
+    backdrop-filter: grayscale(1);
+    opacity: 0.9;
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    right: 0%;
+    z-index: 10;
+  }
+}

@@ -1,0 +1,53 @@
+@import '@/styles/tools/mixins.scss';
+
+.button-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.8;
+  &__spiner {
+    width: 18px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 3px solid var(--clr-primary-light);
+    border-top-color: var(--clr-primary);
+    border-bottom-color: var(--clr-primary);
+    animation: rotate 1s infinite;
+  }
+}
+
+.local-loading {
+  display: flex;
+  justify-content: center;
+  padding: 100px 10px;
+  &__spiner {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 5px solid var(--clr-primary-light);
+    border-top-color: var(--clr-primary);
+    border-bottom-color: var(--clr-primary);
+    animation: rotate 1s infinite;
+  }
+}
+
+.page-loading {
+  background: var(--clr-white);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@include adaptation('tablet', max) {
+  .page-loading__gif {
+    width: 45px;
+    height: 50px;
+  }
+}

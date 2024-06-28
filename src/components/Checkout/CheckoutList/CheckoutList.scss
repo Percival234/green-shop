@@ -1,0 +1,8 @@
+.checkout-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-right: 5px;
+  max-height: 200px;
+  overflow-y: scroll;
+}

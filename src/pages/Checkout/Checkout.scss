@@ -1,0 +1,25 @@
+.checkout {
+  display: flex;
+  align-content: stretch;
+  flex-wrap: wrap;
+  gap: var(--padding-large);
+  &__form {
+    flex: 1 1 600px;
+  }
+  &__columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--padding-small);
+  }
+  &__column {
+    flex: 1 0 290px;
+  }
+  &__order {
+    flex: 1 0 290px;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

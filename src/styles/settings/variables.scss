@@ -1,0 +1,52 @@
+@import '../tools/mixins.scss';
+
+:root {
+  --clr-white: #ffffff;
+  --clr-black: #3d3d3d;
+  --clr-primary: #46a358;
+  --clr-primary-dark: #367d44;
+  --clr-primary-light: #ebffeb;
+  --clr-background: #f8f8f8;
+  --clr-gray: #727272;
+  --clr-gray-light: #b8b8b8;
+  --clr-orange: #ffac0c;
+  --clr-red: #f03800;
+  //
+  --ff-primary: 'Cera Pro';
+  //
+  --fs-icon: 25px;
+  --fs-primary: 16px;
+  --fs-secondary: 16px;
+  --fs-text: 14px;
+  --fs-title: 30px;
+  --fs-sub-title: 20px;
+  --fs-item-title: 18px;
+  //
+  --lh-primary: 1;
+  --lh-secondary: 1.3;
+  //
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  //
+  --header-height: 70px;
+  //
+  --padding-large: 50px;
+  --padding-small: 30px;
+  @include adaptation('tablet-wide', max) {
+    --header-height: 60px;
+  }
+  @include adaptation('tablet', max) {
+    --fs-icon: 20px;
+    --header-height: 50px;
+    --padding-large: 35px;
+    --padding-small: 20px;
+  }
+  @include adaptation('phablet', max) {
+    --fs-title: 24px;
+    --fs-secondary: 14px;
+    --fs-sub-title: 18px;
+    --fs-item-title: 16px;
+    --padding-large: 20px;
+  }
+}

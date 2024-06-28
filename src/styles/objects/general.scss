@@ -1,0 +1,25 @@
+@import '@/styles/objects/app.scss';
+@import '@/styles/objects/main.scss';
+@import '@/styles/tools/mixins.scss';
+@import '@/styles/objects/container.scss';
+
+@include adaptation('tablet-wide', max) {
+  .hidden-tablet-wide {
+    display: none;
+  }
+}
+@include adaptation('tablet', max) {
+  .hidden-tablet {
+    display: none;
+  }
+}
+@include adaptation('phablet', max) {
+  .hidden-phablet {
+    display: none;
+  }
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+}

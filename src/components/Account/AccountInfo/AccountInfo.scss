@@ -1,0 +1,11 @@
+.account-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--padding-large);
+  &__forms {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-large);
+  }
+}

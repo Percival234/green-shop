@@ -1,0 +1,52 @@
+@import '@/styles/tools/mixins.scss';
+
+.header {
+  position: sticky;
+  background: var(--clr-white);
+  top: 0;
+  left: 0;
+  z-index: 500;
+  width: 100%;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: var(--header-height);
+  }
+  &__action {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  &__cart-info {
+    position: relative;
+  }
+  &__cart-length {
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 3px;
+    right: 0px;
+    height: 18px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    font-size: 12px;
+    color: var(--clr-white);
+    background: var(--clr-primary);
+  }
+}
+
+@include adaptation('phone', max) {
+  .header {
+    &__container {
+      gap: 15px;
+    }
+    &__action {
+      gap: 3px;
+    }
+  }
+}

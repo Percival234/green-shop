@@ -1,0 +1,17 @@
+.product-about {
+  &__nav {
+    border-bottom: 2px solid var(--clr-primary-light);
+    margin-bottom: 20px;
+  }
+  &__nav-link {
+    font-size: var(--fs-item-title);
+    padding: 10px 30px;
+    font-weight: var(--fw-bold);
+    &:hover,
+    &:active,
+    &.active {
+      background: var(--clr-background);
+      color: var(--clr-primary);
+    }
+  }
+}

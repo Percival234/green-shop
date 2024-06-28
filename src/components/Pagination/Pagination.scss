@@ -1,0 +1,26 @@
+.pag {
+  display: flex;
+  align-self: center;
+  gap: 5px;
+  overflow: auto;
+  max-width: 500px;
+  &__point {
+    min-width: 40px;
+    aspect-ratio: 1;
+    border-radius: 5px;
+    font-size: var(--fs-item-title);
+    font-weight: var(--fw-bold);
+    color: var(--clr-primary);
+    border: 2px solid var(--clr-primary);
+    transition: 0.3s;
+    &.active {
+      color: white;
+      background: var(--clr-primary);
+    }
+    &:hover {
+      background: var(--clr-primary-dark);
+      color: white;
+      border-color: var(--clr-primary-dark);
+    }
+  }
+}

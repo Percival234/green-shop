@@ -1,0 +1,53 @@
+@import '@/styles/tools/mixins.scss';
+
+.sort {
+  font-size: var(--fs-item-title);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  &__select {
+    position: relative;
+    width: 170px;
+  }
+  &__menu {
+    border: 1px solid var(--clr-primary-light);
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    z-index: 50;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  &__option {
+    text-transform: capitalize;
+    background: var(--clr-white);
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover,
+    &:active {
+      background: var(--clr-background);
+      color: var(--clr-primary);
+    }
+    &.hidden {
+      display: none;
+    }
+  }
+  &__option-current {
+    text-decoration: underline;
+    color: var(--clr-primary);
+    font-weight: var(--fw-medium);
+    border-radius: 5px;
+  }
+}
+
+@include adaptation('phablet', max) {
+  .sort__select {
+    width: 110px;
+  }
+}

@@ -1,0 +1,7 @@
+.cart {
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--padding-large);
+  }
+}

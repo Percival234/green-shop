@@ -1,0 +1,20 @@
+.contacts {
+  padding: var(--padding-small) 20px;
+  background: var(--clr-primary-light);
+  border-radius: 5px;
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+  }
+  &__item {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 10px;
+    align-items: center;
+    font-style: italic;
+  }
+  &__icon {
+    color: var(--clr-primary);
+  }
+}

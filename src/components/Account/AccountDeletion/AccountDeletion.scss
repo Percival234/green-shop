@@ -1,0 +1,9 @@
+.account-deletion {
+  flex: 1 1 100%;
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+}

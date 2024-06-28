@@ -1,0 +1,13 @@
+.form-error {
+  color: var(--clr-red);
+  font-weight: var(--fw-medium);
+  max-width: 250px;
+  padding: 5px 0px;
+}
+
+.server-error {
+  font-size: var(--fs-item-title);
+  font-weight: var(--fw-bold);
+  color: var(--clr-orange);
+  height: 2rem;
+}

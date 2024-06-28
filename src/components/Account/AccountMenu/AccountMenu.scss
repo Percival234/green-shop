@@ -1,0 +1,67 @@
+@import '@/styles/tools/mixins.scss';
+
+.account-menu {
+  padding-top: 20px;
+  width: 250px;
+  background: var(--clr-background);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    text-transform: capitalize;
+    font-size: var(--fs-item-title);
+    &.active {
+      color: var(--clr-primary);
+      font-weight: var(--fw-medium);
+      padding-left: 15px;
+      border-left: 5px solid var(--clr-primary);
+      background: var(--clr-white);
+    }
+  }
+}
+
+@include adaptation('tablet-wide', max) {
+  .account-menu {
+    width: 100%;
+    padding-top: 0;
+    &__nav {
+      display: flex;
+    }
+    &__link {
+      flex: 1 1 100%;
+      padding: 10px;
+      border-bottom: 3px solid transparent;
+      &.active {
+        border-left: 0px;
+        border-bottom-color: var(--clr-primary);
+        padding-left: 10px;
+      }
+    }
+  }
+}
+
+@include adaptation('phone-wide', max) {
+  .account-menu {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 50px;
+      background: linear-gradient(90deg, transparent, var(--clr-white));
+    }
+    &__nav {
+      overflow: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@import '@/styles/tools/mixins.scss';
+
+.aside {
+  &.hidden {
+    display: none;
+  }
+  &__sticky {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+@include adaptation('tablet', max) {
+  .aside {
+    display: none;
+    &.hidden {
+      display: block;
+    }
+  }
+}

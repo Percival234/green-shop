@@ -1,0 +1,30 @@
+.related-slider {
+  overflow: hidden;
+  padding-bottom: 30px;
+  position: relative;
+  &__line {
+    display: flex;
+    transition: 0.5s;
+  }
+  &__pagination {
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+  }
+  &__pagination-point {
+    cursor: pointer;
+    width: 15px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid var(--clr-primary);
+    transition: 0.2s;
+    &:hover,
+    &:active,
+    &.active {
+      background: var(--clr-primary);
+    }
+  }
+}

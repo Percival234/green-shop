@@ -1,0 +1,46 @@
+@import '@/styles/tools/mixins';
+
+.order-item {
+  display: grid;
+  gap: 20px;
+  padding: 25px;
+  background: var(--clr-background);
+  border-radius: 5px;
+  &__info {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-bottom: 1px solid var(--clr-gray-light);
+  }
+  &__info-item {
+    flex: 1;
+    display: grid;
+    gap: 5px;
+    white-space: nowrap;
+  }
+  &__info-result {
+    font-weight: var(--fw-bold);
+  }
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  &__details-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-item-title);
+  }
+}
+
+@include adaptation('phablet', max) {
+  .order-item {
+    padding: 5px;
+    &__info {
+      padding: 5px;
+    }
+  }
+}

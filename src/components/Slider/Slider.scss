@@ -1,0 +1,37 @@
+.slider {
+  border-radius: 5px;
+  overflow: hidden;
+  &__container {
+    position: relative;
+    overflow: hidden;
+  }
+  &__line {
+    display: flex;
+    transition: 0.7s ease;
+  }
+  &__pag {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &__pag-point {
+    width: 22px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: block;
+    background: var(--clr-gray-light);
+    opacity: 0.2;
+    cursor: pointer;
+    transition: 0.2s;
+    &.active {
+      opacity: 0.8;
+    }
+  }
+  &__slide {
+    flex: 1 0 100%;
+    position: relative;
+  }
+}
