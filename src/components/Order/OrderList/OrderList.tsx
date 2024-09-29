@@ -1,6 +1,6 @@
 import { AiOutlineHistory } from 'react-icons/ai';
 
-import { OrderType } from '@/type/order';
+import { OrderType } from '@/types/order';
 
 import { Empty } from '@/components/UI/Empty/Empty';
 import { Order } from '@/components/Order/Order/Order';

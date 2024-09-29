@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { UpdateUserType } from '@/type/user';
+import { UpdateUserType } from '@/types/user';
 
 import { Title } from '@/components/UI/Title/Title';
 import { Button } from '@/components/UI/Button/Button';

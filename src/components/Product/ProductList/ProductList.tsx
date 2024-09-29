@@ -1,6 +1,6 @@
 import { FiShoppingCart } from 'react-icons/fi';
 
-import { ProductType } from '@/type/product';
+import { ProductType } from '@/types/product';
 
 import { Empty } from '@/components/UI/Empty/Empty';
 import { ProductCard } from '@/components/Product/ProductCard/ProductCard';

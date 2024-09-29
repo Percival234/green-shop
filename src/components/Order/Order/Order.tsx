@@ -1,4 +1,4 @@
-import { OrderType } from '@/type/order';
+import { OrderType } from '@/types/order';
 
 import { CheckoutList } from '@/components/Checkout/CheckoutList/CheckoutList';
 

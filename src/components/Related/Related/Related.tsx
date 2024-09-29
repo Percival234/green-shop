@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
-import { CategoryType } from '@/type/category';
+import { CategoryType } from '@/types/category';
 
 import { Title } from '@/components/UI/Title/Title';
 import { ErrorServer } from '@/components/UI/Error/Error';

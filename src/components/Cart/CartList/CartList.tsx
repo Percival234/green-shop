@@ -1,4 +1,4 @@
-import { CartItemType } from '@/type/cartItem';
+import { CartItemType } from '@/types/cartItem';
 
 import { CartItem } from '@/components/Cart/CartItem/CartItem';
 

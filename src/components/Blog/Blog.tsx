@@ -3,7 +3,7 @@ import { TextTruncated } from '@/components/UI/TextTruncated/TextTruncated';
 
 import { SERVER_URL } from '@/constants/SERVER_URL';
 
-import { BlogType } from '@/type/blog';
+import { BlogType } from '@/types/blog';
 
 type BlogProps = {
   blog: BlogType;

@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 import { useMutation } from '@tanstack/react-query';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { CreateReportType } from '@/type/report';
+import { CreateReportType } from '@/types/report';
 
 import { Title } from '@/components/UI/Title/Title';
 import { Button } from '@/components/UI/Button/Button';

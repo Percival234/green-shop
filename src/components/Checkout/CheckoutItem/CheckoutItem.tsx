@@ -1,4 +1,4 @@
-import { CartItemType } from '@/type/cartItem';
+import { CartItemType } from '@/types/cartItem';
 
 import { SERVER_URL } from '@/constants/SERVER_URL';
 

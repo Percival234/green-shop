@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { CredentialsType } from '@/type/credentials';
+import { CredentialsType } from '@/types/credentials';
 
 import { Button } from '@/components/UI/Button/Button';
 import { ErrorForm } from '@/components/UI/Error/Error';

@@ -2,8 +2,8 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
-import { UserType } from '@/type/user';
-import { ProductType } from '@/type/product';
+import { UserType } from '@/types/user';
+import { ProductType } from '@/types/product';
 
 type UserState = {
   isAuth: boolean;

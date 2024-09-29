@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { CreateReviewType } from '@/type/review';
+import { CreateReviewType } from '@/types/review';
 
 import { Button } from '@/components/UI/Button/Button';
 import { ErrorForm } from '@/components/UI/Error/Error';

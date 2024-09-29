@@ -1,4 +1,4 @@
-import { DetailType } from '@/type/detail';
+import { DetailType } from '@/types/detail';
 
 import { Title } from '@/components/UI/Title/Title';
 

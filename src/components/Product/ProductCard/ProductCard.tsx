@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { AiOutlineHeart, AiFillHeart, AiOutlineSearch, AiFillStar } from 'react-icons/ai';
 
-import { ProductType } from '@/type/product';
+import { ProductType } from '@/types/product';
 
 import { Link } from '@/components/UI/Link/Link';
 import { Price } from '@/components/Price/Price';

@@ -1,6 +1,6 @@
 import { FiMessageSquare } from 'react-icons/fi';
 
-import { ReviewType } from '@/type/review';
+import { ReviewType } from '@/types/review';
 
 import { Empty } from '@/components/UI/Empty/Empty';
 import { Review } from '@/components/Reviews/Review/Review';

@@ -1,4 +1,4 @@
-import { ReviewType } from '@/type/review';
+import { ReviewType } from '@/types/review';
 
 import { Rating } from '@/components/Rating/Rating';
 

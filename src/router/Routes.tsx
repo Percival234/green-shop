@@ -1,19 +1,42 @@
+import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { Root } from '@/root/Root';
-import { Cart } from '@/pages/Cart/Cart';
-import { Home } from '@/pages/Home/Home';
-import { Blog } from '@/pages/Blog/Blog';
-import { Account } from '@/pages/Account/Account';
-import { Product } from '@/pages/Product/Product';
-import { Checkout } from '@/pages/Checkout/Checkout';
-import { NotFound } from '@/pages/NotFound/NotFound';
-import { Details } from '@/components/Details/Details';
-import { Orders } from '@/pages/Account/Orders/Orders';
-import { Support } from '@/pages/Account/Support/Support';
-import { Reviews } from '@/pages/Product/Reviews/Reviews';
-import { Wishlist } from '@/pages/Account/Wishlist/Wishlist';
-import { AccountInfo } from '@/components/Account/AccountInfo/AccountInfo';
+const Cart = lazy(() => import('@/pages/Cart/Cart').then((module) => ({ default: module.Cart })));
+const Home = lazy(() => import('@/pages/Home/Home').then((module) => ({ default: module.Home })));
+const Blog = lazy(() => import('@/pages/Blog/Blog').then((module) => ({ default: module.Blog })));
+const Account = lazy(() =>
+  import('@/pages/Account/Account').then((module) => ({ default: module.Account }))
+);
+const Product = lazy(() =>
+  import('@/pages/Product/Product').then((module) => ({ default: module.Product }))
+);
+const Checkout = lazy(() =>
+  import('@/pages/Checkout/Checkout').then((module) => ({ default: module.Checkout }))
+);
+const NotFound = lazy(() =>
+  import('@/pages/NotFound/NotFound').then((module) => ({ default: module.NotFound }))
+);
+const Details = lazy(() =>
+  import('@/components/Details/Details').then((module) => ({ default: module.Details }))
+);
+const Orders = lazy(() =>
+  import('@/pages/Account/Orders/Orders').then((module) => ({ default: module.Orders }))
+);
+const Support = lazy(() =>
+  import('@/pages/Account/Support/Support').then((module) => ({ default: module.Support }))
+);
+const Reviews = lazy(() =>
+  import('@/pages/Product/Reviews/Reviews').then((module) => ({ default: module.Reviews }))
+);
+const Wishlist = lazy(() =>
+  import('@/pages/Account/Wishlist/Wishlist').then((module) => ({ default: module.Wishlist }))
+);
+const AccountInfo = lazy(() =>
+  import('@/components/Account/AccountInfo/AccountInfo').then((module) => ({
+    default: module.AccountInfo,
+  }))
+);
 
 const routes = [
   {

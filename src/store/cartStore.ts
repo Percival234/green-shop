@@ -2,8 +2,8 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
-import { ProductType } from '@/type/product';
-import { CartItemType } from '@/type/cartItem';
+import { ProductType } from '@/types/product';
+import { CartItemType } from '@/types/cartItem';
 
 import { SHIPPING } from '@/constants/SHIPPING';
 import { PAYMENT_METHODS } from '@/constants/PAYMENT_METHODS';

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 
-import { ProductType } from '@/type/product';
+import { ProductType } from '@/types/product';
 
 import { RelatedSlide } from '@/components/Related/RelatedSlide/RelatedSlide';
 

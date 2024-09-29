@@ -1,4 +1,4 @@
-import { ProductInfoType } from '@/type/product';
+import { ProductInfoType } from '@/types/product';
 
 import { Price } from '@/components/Price/Price';
 import { Title } from '@/components/UI/Title/Title';

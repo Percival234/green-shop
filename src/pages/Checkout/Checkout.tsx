@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { CreateOrderType } from '@/type/order';
+import { CreateOrderType } from '@/types/order';
 
 import { Title } from '@/components/UI/Title/Title';
 import { Button } from '@/components/UI/Button/Button';

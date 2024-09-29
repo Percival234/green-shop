@@ -1,6 +1,6 @@
 import { FiInfo } from 'react-icons/fi';
 
-import { DetailType } from '@/type/detail';
+import { DetailType } from '@/types/detail';
 
 import { Detail } from './Detail';
 import { Empty } from '@/components/UI/Empty/Empty';

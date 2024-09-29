@@ -1,17 +1,17 @@
 import '@tanstack/react-query';
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 
-import { SizeType } from '@/type/size';
-import { BlogType } from '@/type/blog';
-import { UpdatePasswordType, UpdateUserType, UserType } from '@/type/user';
-import { DetailType } from '@/type/detail';
-import { CreateReviewType, ReviewType } from '@/type/review';
-import { WishlistType } from '@/type/wishlist';
-import { CategoryType } from '@/type/category';
-import { CreateReportType } from '@/type/report';
-import { CredentialsType } from '@/type/credentials';
-import { CreateOrderType, OrderType } from '@/type/order';
-import { ProductInfoType, ProductType } from '@/type/product';
+import { SizeType } from '@/types/size';
+import { BlogType } from '@/types/blog';
+import { UpdatePasswordType, UpdateUserType, UserType } from '@/types/user';
+import { DetailType } from '@/types/detail';
+import { CreateReviewType, ReviewType } from '@/types/review';
+import { WishlistType } from '@/types/wishlist';
+import { CategoryType } from '@/types/category';
+import { CreateReportType } from '@/types/report';
+import { CredentialsType } from '@/types/credentials';
+import { CreateOrderType, OrderType } from '@/types/order';
+import { ProductInfoType, ProductType } from '@/types/product';
 
 import { SERVER_URL } from '@/constants/SERVER_URL';
 

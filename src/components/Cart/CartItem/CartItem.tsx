@@ -1,6 +1,6 @@
 import { AiOutlineDelete, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
-import { CartItemType } from '@/type/cartItem';
+import { CartItemType } from '@/types/cartItem';
 
 import { Link } from '@/components/UI/Link/Link';
 import { Button } from '@/components/UI/Button/Button';

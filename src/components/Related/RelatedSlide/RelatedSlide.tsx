@@ -1,6 +1,6 @@
 import { ProductCard } from '@/components/Product/ProductCard/ProductCard';
 
-import { ProductType } from '@/type/product';
+import { ProductType } from '@/types/product';
 
 import './RelatedSlide.scss';
 

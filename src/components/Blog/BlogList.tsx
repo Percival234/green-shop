@@ -1,6 +1,6 @@
 import { FiInfo } from 'react-icons/fi';
 
-import { BlogType } from '@/type/blog';
+import { BlogType } from '@/types/blog';
 
 import { Blog } from '@/components/Blog/Blog';
 import { Empty } from '@/components/UI/Empty/Empty';
