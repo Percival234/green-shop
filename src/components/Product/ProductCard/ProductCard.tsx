@@ -11,11 +11,11 @@ import { TextTruncated } from '@/components/UI/TextTruncated/TextTruncated';
 
 import { SERVER_URL } from '@/constants/SERVER_URL';
 
-import { useUserStore } from '@/store/userStore';
 import { useCartStore } from '@/store/cartStore';
 
 import { updateWishlist } from '@/API/API';
 
+import { useWishlist } from '@/hooks/useWishlist';
 import { useRequiredAuth } from '@/hooks/useRequiredAuth';
 
 import './ProductCard.scss';
@@ -28,12 +28,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { _id, name, image, size, price, sale, description, rating, quantity } = product;
 
   const client = useQueryClient();
-  const wishlist = useUserStore((state) => state.wishlist);
+  const { data: wishlist } = useWishlist();
   const { cartItems, addToCart, removeFromCart } = useCartStore((state) => state);
   const authCheck = useRequiredAuth();
 
   const inCart = cartItems.some((item) => item.product._id === _id);
-  const inWishlist = wishlist.some((product) => product._id === _id);
+  const inWishlist = wishlist ? wishlist?.products.some((product) => product._id === _id) : [];
 
   const handleAddToCart = () => {
     addToCart(product, 1);
