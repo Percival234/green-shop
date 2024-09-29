@@ -7,11 +7,11 @@ import { ProductType } from '@/types/product';
 
 import { Button } from '@/components/UI/Button/Button';
 
-import { useUserStore } from '@/store/userStore';
 import { useCartStore } from '@/store/cartStore';
 
 import { updateWishlist } from '@/API/API';
 
+import { useWishlist } from '@/hooks/useWishlist';
 import { useRequiredAuth } from '@/hooks/useRequiredAuth';
 
 import './ProductAction.scss';
@@ -24,11 +24,11 @@ export const ProductAction: React.FC<ProductActionProps> = ({ product }) => {
   const client = useQueryClient();
   const checkAuth = useRequiredAuth();
   const [counter, setCounter] = useState(1);
-  const { wishlist } = useUserStore((state) => state);
+  const { data: wishlist } = useWishlist();
   const { cartItems, addToCart, removeFromCart } = useCartStore((state) => state);
 
   const inCart = cartItems.some((item) => item.product._id === product._id);
-  const inWishlist = wishlist.some((prod) => prod._id === product._id);
+  const inWishlist = wishlist ? wishlist.products.some((prod) => prod._id === product._id) : [];
 
   const increaseCount = () => setCounter(counter + 1);
   const decreaseCount = () => setCounter(counter - 1);
