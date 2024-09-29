@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { Root } from '@/root/Root';
@@ -41,7 +41,11 @@ const AccountInfo = lazy(() =>
 const routes = [
   {
     path: '',
-    element: <Root />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <Root />
+      </Suspense>
+    ),
     children: [
       {
         path: '',
