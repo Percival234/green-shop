@@ -4,7 +4,7 @@ import { Sort } from '@/components/Sort/Sort';
 import { Search } from '@/components/Search/Search';
 import { Aside } from '@/components/Aside/Aside/Aside';
 import { ErrorServer } from '@/components/UI/Error/Error';
-import { LoadingPage } from '@/components/UI/Loading/Loading';
+import { LoadingLocal } from '@/components/UI/Loading/Loading';
 import { Pagination } from '@/components/Pagination/Pagination';
 import { ProductList } from '@/components/Product/ProductList/ProductList';
 
@@ -19,7 +19,7 @@ export const Shop = () => {
     refetchOnMount: true,
   });
 
-  if (isPending) return <LoadingPage />;
+  if (isPending) return <LoadingLocal />;
   if (error) return <ErrorServer error={error} />;
 
   return (
