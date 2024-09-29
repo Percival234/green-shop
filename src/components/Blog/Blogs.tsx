@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { BlogList } from './BlogList';
 import { Title } from '@/components/UI/Title/Title';
 import { ErrorServer } from '@/components/UI/Error/Error';
-import { LoadingPage } from '@/components/UI/Loading/Loading';
+import { LoadingLocal } from '@/components/UI/Loading/Loading';
 
 import { getBlogs } from '@/API/API';
 
@@ -15,7 +15,7 @@ export const Blogs = () => {
     queryFn: getBlogs,
   });
 
-  if (isPending) return <LoadingPage />;
+  if (isPending) return <LoadingLocal />;
   if (error) return <ErrorServer error={error} />;
 
   return (

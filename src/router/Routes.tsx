@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { Root } from '@/root/Root';
+import { LoadingPage } from '@/components/UI/Loading/Loading';
 const Cart = lazy(() => import('@/pages/Cart/Cart').then((module) => ({ default: module.Cart })));
 const Home = lazy(() => import('@/pages/Home/Home').then((module) => ({ default: module.Home })));
 const Blog = lazy(() => import('@/pages/Blog/Blog').then((module) => ({ default: module.Blog })));
@@ -42,7 +43,7 @@ const routes = [
   {
     path: '',
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingPage />}>
         <Root />
       </Suspense>
     ),
