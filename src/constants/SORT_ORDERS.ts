@@ -1,1 +1,7 @@
-export const SORT_ORDERS = ['default', 'rating', 'alphabet', 'ascending price', 'descending price'];
+export const SORT_ORDERS = [
+  'default',
+  'rating',
+  'alphabet',
+  'ascending price',
+  'descending price',
+] as const;
