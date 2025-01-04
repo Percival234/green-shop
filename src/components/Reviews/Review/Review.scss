@@ -4,6 +4,7 @@
   border-radius: 10px;
   background: var(--clr-background);
   padding: 15px;
+  overflow: hidden;
   &__top {
     display: flex;
     gap: 10px;
@@ -37,6 +38,7 @@
     color: var(--clr-primary);
   }
   &__date {
+    text-align: right;
     color: var(--clr-gray-light);
     font-size: var(--fs-secondary);
   }
@@ -52,11 +54,6 @@
     }
     &__info {
       align-items: center;
-    }
-    &__date {
-      position: absolute;
-      bottom: 15px;
-      left: 10px;
     }
   }
 }

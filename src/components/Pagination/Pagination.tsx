@@ -8,7 +8,7 @@ type PaginationProps = {
 };
 
 export const Pagination: React.FC<PaginationProps> = ({ pagesCount }) => {
-  const client = useQueryClient();
+  const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handlePage = (page: number) => {
@@ -20,7 +20,7 @@ export const Pagination: React.FC<PaginationProps> = ({ pagesCount }) => {
       }
       return prev;
     });
-    client.invalidateQueries({ queryKey: ['products'] });
+    queryClient.invalidateQueries({ queryKey: ['products'] });
   };
 
   return (

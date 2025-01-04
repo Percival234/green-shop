@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { ErrorServer } from '@/components/UI/Error/Error';
 import { LoadingPage } from '@/components/UI/Loading/Loading';
 
-import { getBlog } from '@/API/API';
+import { BlogService } from '@/api/services/blog-service';
 
 import { SERVER_URL } from '@/constants/SERVER_URL';
 
@@ -15,7 +15,7 @@ export const Blog = () => {
 
   const { data, isPending, error } = useQuery({
     queryKey: ['blog', id],
-    queryFn: () => getBlog(String(id)),
+    queryFn: () => BlogService.getById(String(id)),
   });
 
   if (isPending) return <LoadingPage />;

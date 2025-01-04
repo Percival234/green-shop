@@ -10,7 +10,9 @@ import { Button } from '@/components/UI/Button/Button';
 import { InputWithLabel } from '@/components/UI/Input/Input';
 import { LoadingButton } from '@/components/UI/Loading/Loading';
 
-import { updateUser } from '@/API/API';
+import { UserService } from '@/api/services/user-service';
+
+import { catchError } from '@/helpers/catchError';
 
 type PasswordFormProps = {
   newPassword: string;
@@ -18,7 +20,7 @@ type PasswordFormProps = {
 };
 
 export const AccountPassword = () => {
-  const client = useQueryClient();
+  const queryClient = useQueryClient();
   const {
     register,
     handleSubmit,
@@ -28,14 +30,14 @@ export const AccountPassword = () => {
   } = useForm<PasswordFormProps>();
 
   const { mutate, isPending } = useMutation({
-    mutationFn: (userData: UpdatePasswordType) => updateUser(userData),
+    mutationFn: (userData: UpdatePasswordType) => UserService.update(userData),
     onSuccess: (res) => {
-      client.invalidateQueries({ queryKey: ['user'] });
+      queryClient.invalidateQueries({ queryKey: ['user'] });
       reset();
       toast.success(res.message);
     },
     onError: (error) => {
-      toast.error(error?.response?.data?.message);
+      toast.error(catchError(error));
     },
   });
 

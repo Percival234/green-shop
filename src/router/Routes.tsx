@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import { Root } from '@/root/Root';
 import { LoadingPage } from '@/components/UI/Loading/Loading';
+import { Reviews } from '@/pages/Product/Reviews/Reviews';
 const Cart = lazy(() => import('@/pages/Cart/Cart').then((module) => ({ default: module.Cart })));
 const Home = lazy(() => import('@/pages/Home/Home').then((module) => ({ default: module.Home })));
 const Blog = lazy(() => import('@/pages/Blog/Blog').then((module) => ({ default: module.Blog })));
@@ -26,9 +27,6 @@ const Orders = lazy(() =>
 );
 const Support = lazy(() =>
   import('@/pages/Account/Support/Support').then((module) => ({ default: module.Support }))
-);
-const Reviews = lazy(() =>
-  import('@/pages/Product/Reviews/Reviews').then((module) => ({ default: module.Reviews }))
 );
 const Wishlist = lazy(() =>
   import('@/pages/Account/Wishlist/Wishlist').then((module) => ({ default: module.Wishlist }))

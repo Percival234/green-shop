@@ -5,14 +5,14 @@ import { Title } from '@/components/UI/Title/Title';
 import { ErrorServer } from '@/components/UI/Error/Error';
 import { LoadingLocal } from '@/components/UI/Loading/Loading';
 
-import { getBlogs } from '@/API/API';
+import { BlogService } from '@/api/services/blog-service';
 
 import './Blogs.scss';
 
 export const Blogs = () => {
   const { data, isPending, error } = useQuery({
     queryKey: ['blogs'],
-    queryFn: getBlogs,
+    queryFn: () => BlogService.getMany({ limit: 4 }),
   });
 
   if (isPending) return <LoadingLocal />;

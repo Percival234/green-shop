@@ -1,12 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { getWishlist } from '@/API/API';
+import { useUser } from './useUser';
+
+import { WishlistService } from '@/api/services/wishlist-service';
 
 export const useWishlist = () => {
-  const response = useQuery({
+  const { data: user } = useUser();
+  return useQuery({
     queryKey: ['wishlist'],
-    queryFn: getWishlist,
+    queryFn: WishlistService.getUserWishlist,
+    enabled: !!user,
   });
-
-  return response;
 };

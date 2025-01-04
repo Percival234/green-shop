@@ -1,6 +1,7 @@
 import { ReviewType } from '@/types/review';
 
 import { Rating } from '@/components/Rating/Rating';
+import { ReviewMenu } from '@/components//Reviews/ReviewMenu/ReviewMenu';
 
 import { SERVER_URL } from '@/constants/SERVER_URL';
 
@@ -10,7 +11,7 @@ type ReviewProps = {
   review: ReviewType;
 };
 
-export const Review: React.FC<ReviewProps> = ({ review: { user, rate, text, createdAt } }) => {
+export const Review: React.FC<ReviewProps> = ({ review: { _id, user, rate, text, createdAt } }) => {
   return (
     <div className="reviews-item">
       <div className="reviews-item__top">
@@ -33,9 +34,10 @@ export const Review: React.FC<ReviewProps> = ({ review: { user, rate, text, crea
             <Rating rating={rate} />
           </div>
         </div>
-        <div className="reviews-item__date">{new Date(createdAt).toLocaleDateString('en-GB')}</div>
+        {user && <ReviewMenu id={_id} user={user} />}
       </div>
       <p className="reviews-item__text">{text}</p>
+      <div className="reviews-item__date">{new Date(createdAt).toLocaleDateString('en-GB')}</div>
     </div>
   );
 };

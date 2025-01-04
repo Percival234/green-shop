@@ -1,8 +1,16 @@
 import { CartItemType } from './cartItem';
 
+export enum OrderStatus {
+  Pending = 'pending',
+  Shipped = 'shipped',
+  Delivered = 'delivered',
+  Canceled = 'canceled',
+}
+
 export type OrderType = {
   _id: string;
-  userId?: string;
+  status: OrderStatus;
+  userId: string | null;
   email: string;
   firstname: string;
   lastname: string;

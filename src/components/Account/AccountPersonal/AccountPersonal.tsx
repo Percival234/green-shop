@@ -11,11 +11,13 @@ import { ErrorForm } from '@/components/UI/Error/Error';
 import { InputWithLabel } from '@/components/UI/Input/Input';
 import { LoadingButton } from '@/components/UI/Loading/Loading';
 
-import { useUserStore } from '@/store/userStore';
-
-import { updateUser } from '@/API/API';
+import { UserService } from '@/api/services/user-service';
 
 import { REGEX_EMAIL } from '@/constants/EMAIL_REGEX';
+
+import { useUser } from '@/hooks/useUser';
+
+import { catchError } from '@/helpers/catchError';
 
 type PersonalFormProps = {
   personalFirstname: string;
@@ -27,8 +29,8 @@ type PersonalFormProps = {
 };
 
 export const AccountPersonal = () => {
-  const client = useQueryClient();
-  const user = useUserStore((state) => state.user);
+  const queryClient = useQueryClient();
+  const { data: user } = useUser();
   const {
     register,
     handleSubmit,
@@ -37,13 +39,13 @@ export const AccountPersonal = () => {
   } = useForm<PersonalFormProps>();
 
   const { mutate, isPending } = useMutation({
-    mutationFn: (userData: UpdateUserType) => updateUser(userData),
+    mutationFn: (userData: UpdateUserType) => UserService.update(userData),
     onSuccess: (data) => {
-      client.invalidateQueries({ queryKey: ['user'] });
+      queryClient.invalidateQueries({ queryKey: ['user'] });
       toast.success(data.message);
     },
     onError: (error) => {
-      toast.error(error?.response?.data?.message);
+      toast.error(catchError(error));
     },
   });
 

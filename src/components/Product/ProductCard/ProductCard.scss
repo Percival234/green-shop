@@ -59,6 +59,9 @@
     opacity: 0;
     transition: 0.3s;
   }
+  &__wishlist-button {
+    background: var(--clr-white);
+  }
   &__button {
     width: 40px;
     aspect-ratio: 1;

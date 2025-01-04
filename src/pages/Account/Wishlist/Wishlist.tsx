@@ -9,22 +9,24 @@ import { ProductList } from '@/components/Product/ProductList/ProductList';
 
 import { useWishlist } from '@/hooks/useWishlist';
 
-import { clearWishlist } from '@/API/API';
+import { WishlistService } from '@/api/services/wishlist-service';
+
+import { catchError } from '@/helpers/catchError';
 
 import './Wishlist.scss';
 
 export const Wishlist = () => {
-  const queryClient = useQueryClient();
+  const queryqueryClient = useQueryClient();
   const { data: wishlist, isPending, error } = useWishlist();
 
   const { mutate } = useMutation({
-    mutationFn: () => clearWishlist(),
+    mutationFn: () => WishlistService.clear(),
     onSuccess: (res) => {
-      queryClient.invalidateQueries({ queryKey: ['wishlist'] });
+      queryqueryClient.invalidateQueries({ queryKey: ['wishlist'] });
       toast.success(res.message);
     },
     onError: (error) => {
-      toast.error(error?.response?.data?.message);
+      toast.error(catchError(error));
     },
   });
 

@@ -8,7 +8,7 @@ import { ErrorServer } from '@/components/UI/Error/Error';
 import { LoadingLocal } from '@/components/UI/Loading/Loading';
 import { RelatedSlider } from '@/components/Related/RelatedSlider/RelatedSlider';
 
-import { getRelated } from '@/API/API';
+import { ProductService } from '@/api/services/product-service';
 
 import './Related.scss';
 
@@ -21,7 +21,7 @@ export const Related: React.FC<RelatedProps> = ({ category }) => {
 
   const { data, isPending, error } = useQuery({
     queryKey: ['related'],
-    queryFn: () => getRelated(category._id, String(id)),
+    queryFn: () => ProductService.getRelated(category._id, String(id)),
   });
 
   if (isPending) return <LoadingLocal />;

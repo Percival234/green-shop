@@ -9,12 +9,13 @@ import { ErrorForm } from '@/components/UI/Error/Error';
 import { Input, InputPass } from '@/components/UI/Input/Input';
 import { LoadingButton } from '@/components/UI/Loading/Loading';
 
-import { useUserStore } from '@/store/userStore';
 import { useEventStore } from '@/store/eventStore';
 
-import { loginUser } from '@/API/API';
+import { AuthService } from '@/api/services/auth-service';
 
 import { REGEX_EMAIL } from '@/constants/EMAIL_REGEX';
+
+import { catchError } from '@/helpers/catchError';
 
 type LoginFormProps = {
   loginEmail: string;
@@ -22,8 +23,7 @@ type LoginFormProps = {
 };
 
 export const Login = () => {
-  const queryClient = useQueryClient();
-  const setIsAuth = useUserStore((state) => state.setIsAuth);
+  const queryqueryClient = useQueryClient();
   const close = useEventStore((state) => state.close);
 
   const {
@@ -33,14 +33,13 @@ export const Login = () => {
   } = useForm<LoginFormProps>();
 
   const { mutate, isPending } = useMutation({
-    mutationFn: (credentials: CredentialsType) => loginUser(credentials),
-    onSuccess: (res) => {
-      setIsAuth(res?.token);
-      queryClient.invalidateQueries({ queryKey: ['user'] });
+    mutationFn: (credentials: CredentialsType) => AuthService.login(credentials),
+    onSuccess: () => {
+      queryqueryClient.invalidateQueries({ queryKey: ['user'] });
       close('authModal');
     },
     onError: (error) => {
-      toast.error(error?.response?.data?.message);
+      toast.error(catchError(error));
     },
   });
 

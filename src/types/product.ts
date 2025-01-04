@@ -17,5 +17,5 @@ export type ProductType = {
 };
 
 export type ProductInfoType = ProductType & {
-  reviewsLength: number;
+  reviewsCount: number;
 };

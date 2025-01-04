@@ -10,9 +10,11 @@ import { ErrorForm } from '@/components/UI/Error/Error';
 import { TextArea } from '@/components/UI/TextArea/TextArea';
 import { LoadingButton } from '@/components/UI/Loading/Loading';
 
-import { postReport } from '@/API/API';
+import { ReportService } from '@/api/services/report-service';
 
 import { useRequiredAuth } from '@/hooks/useRequiredAuth';
+
+import { catchError } from '@/helpers/catchError';
 
 import './Support.scss';
 
@@ -30,13 +32,13 @@ export const Support = () => {
   } = useForm<ReportFormProps>();
 
   const { mutate, isPending } = useMutation({
-    mutationFn: (data: CreateReportType) => postReport(data),
+    mutationFn: (data: CreateReportType) => ReportService.create(data),
     onSuccess: (res) => {
       toast.success(res.message);
       reset();
     },
     onError: (error) => {
-      toast.error(error?.response?.data?.message);
+      toast.error(catchError(error));
     },
   });
 

@@ -9,7 +9,7 @@ import { NewsLetter } from '@/components/NewsLetter/NewsLetter';
 import { ProductInfo } from '@/components/Product/ProductInfo/ProductInfo';
 import { ProductAbout } from '@/components/Product/ProductAbout/ProductAbout';
 
-import { getProduct } from '@/API/API';
+import { ProductService } from '@/api/services/product-service';
 
 import './Product.scss';
 
@@ -22,7 +22,7 @@ export const Product = () => {
     error,
   } = useQuery({
     queryKey: ['product', id],
-    queryFn: () => getProduct(String(id)),
+    queryFn: () => ProductService.getById(String(id)),
   });
 
   if (isPending) return <LoadingPage />;

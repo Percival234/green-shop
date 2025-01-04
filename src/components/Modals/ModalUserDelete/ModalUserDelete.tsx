@@ -1,26 +1,31 @@
 import { toast } from 'react-toastify';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { Modal } from '@/components/UI/Modal/Modal';
 import { Title } from '@/components/UI/Title/Title';
 import { LoadingPage } from '@/components/UI/Loading/Loading';
 
-import { useUserStore } from '@/store/userStore';
+import { UserService } from '@/api/services/user-service';
+import { AuthService } from '@/api/services/auth-service';
 
-import { deleteUser } from '@/API/API';
+import { catchError } from '@/helpers/catchError';
 
 import './ModalUserDelete.scss';
 
 export const ModalUserDelete = () => {
-  const logout = useUserStore((state) => state.logout);
+  const queryClient = useQueryClient();
+
   const { mutate, isPending } = useMutation({
-    mutationFn: () => deleteUser(),
+    mutationFn: UserService.delete,
     onSuccess: () => {
-      logout();
+      AuthService.removeToken();
+      queryClient.setQueryData(['user'], null);
+      queryClient.setQueryData(['wishlist'], null);
+      queryClient.invalidateQueries({ queryKey: ['user', 'wishlist'] });
       toast.success('User has been deleted');
     },
     onError: (error) => {
-      toast.error(error?.response?.data?.message);
+      toast.error(catchError(error));
     },
   });
 

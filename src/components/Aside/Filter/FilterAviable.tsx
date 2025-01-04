@@ -4,7 +4,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { Title } from '@/components/UI/Title/Title';
 
 export const FilterAvailable = () => {
-  const client = useQueryClient();
+  const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleIsAvailable = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +19,7 @@ export const FilterAvailable = () => {
 
       return prev;
     });
-    client.invalidateQueries({ queryKey: ['products'] });
+    queryClient.invalidateQueries({ queryKey: ['products'] });
   };
 
   return (

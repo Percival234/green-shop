@@ -5,7 +5,7 @@ import { DetailList } from './DetailList';
 import { ErrorServer } from '@/components/UI/Error/Error';
 import { LoadingLocal } from '@/components/UI/Loading/Loading';
 
-import { getDetails } from '@/API/API';
+import { DetailService } from '@/api/services/detail-service';
 
 import './Details.scss';
 
@@ -14,7 +14,7 @@ export const Details = () => {
 
   const { data, isPending, error } = useQuery({
     queryKey: ['details', id],
-    queryFn: () => getDetails(String(id)),
+    queryFn: () => DetailService.getProductDetails(String(id)),
   });
 
   if (isPending) return <LoadingLocal />;

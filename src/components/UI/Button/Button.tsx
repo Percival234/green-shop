@@ -1,12 +1,7 @@
 import clsx from 'clsx';
-import { cva } from 'class-variance-authority';
+import { cva, VariantProps } from 'class-variance-authority';
 
 import './Button.scss';
-
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: 'primary' | 'outline' | 'ghost' | 'rounded';
-  size?: 'default' | 'icon';
-};
 
 const buttonVariant = cva('button', {
   variants: {
@@ -26,6 +21,9 @@ const buttonVariant = cva('button', {
     size: 'default',
   },
 });
+
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonVariant>;
 
 export const Button: React.FC<ButtonProps> = ({ variant, size, className, ...props }) => {
   return <button className={clsx(buttonVariant({ variant, size }), className)} {...props} />;

@@ -13,10 +13,12 @@ import { SERVER_URL } from '@/constants/SERVER_URL';
 
 import { useCartStore } from '@/store/cartStore';
 
-import { updateWishlist } from '@/API/API';
+import { WishlistService } from '@/api/services/wishlist-service';
 
 import { useWishlist } from '@/hooks/useWishlist';
 import { useRequiredAuth } from '@/hooks/useRequiredAuth';
+
+import { catchError } from '@/helpers/catchError';
 
 import './ProductCard.scss';
 
@@ -27,13 +29,13 @@ type ProductCardProps = {
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { _id, name, image, size, price, sale, description, rating, quantity } = product;
 
-  const client = useQueryClient();
+  const queryClient = useQueryClient();
   const { data: wishlist } = useWishlist();
   const { cartItems, addToCart, removeFromCart } = useCartStore((state) => state);
   const authCheck = useRequiredAuth();
 
   const inCart = cartItems.some((item) => item.product._id === _id);
-  const inWishlist = wishlist ? wishlist?.products.some((product) => product._id === _id) : [];
+  const inWishlist = wishlist ? wishlist?.products.some((product) => product._id === _id) : false;
 
   const handleAddToCart = () => {
     addToCart(product, 1);
@@ -43,15 +45,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const handleRemoveFromCart = () => removeFromCart(_id);
 
   const { mutate } = useMutation({
-    mutationFn: (id: string) => updateWishlist(id),
+    mutationFn: (id: string) => WishlistService.update(id),
     onSuccess: () => {
-      client.invalidateQueries({ queryKey: ['wishlist'] });
+      queryClient.invalidateQueries({ queryKey: ['wishlist'] });
       if (!inWishlist) {
         toast.success('Added to wishlist!');
       }
     },
     onError: (error) => {
-      toast.error(error?.response?.data?.message);
+      toast.error(catchError(error));
     },
   });
 
@@ -69,6 +71,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               variant="ghost"
               size="icon"
               aria-label="Remove from wishlist"
+              className="card__wishlist-button"
               onClick={authCheck(update)}>
               <AiFillHeart />
             </Button>
@@ -76,6 +79,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <Button
               variant="ghost"
               size="icon"
+              className="card__wishlist-button"
               aria-label="Add to wishlist"
               onClick={authCheck(update)}>
               <AiOutlineHeart />

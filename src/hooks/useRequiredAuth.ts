@@ -1,13 +1,14 @@
-import { useUserStore } from '@/store/userStore';
 import { useEventStore } from '@/store/eventStore';
 
+import { useUser } from './useUser';
+
 export const useRequiredAuth = () => {
-  const isAuth = useUserStore((state) => state.isAuth);
+  const { data: user } = useUser();
   const open = useEventStore((state) => state.open);
 
   const authCheck = <Args extends any[], Return>(func: (...args: Args) => Return) => {
     return (...args: Args) => {
-      if (isAuth) {
+      if (user) {
         return func(...args);
       } else {
         open('authModal');

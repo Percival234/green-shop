@@ -9,7 +9,7 @@ type FilterCriteryProps = {
 };
 
 export const FilterCritery: React.FC<FilterCriteryProps> = ({ title, count, id, param }) => {
-  const client = useQueryClient();
+  const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleCategory = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +37,7 @@ export const FilterCritery: React.FC<FilterCriteryProps> = ({ title, count, id, 
       prev.delete('page');
       return prev;
     });
-    client.invalidateQueries({ queryKey: ['products'] });
+    queryClient.invalidateQueries({ queryKey: ['products'] });
   };
 
   return (

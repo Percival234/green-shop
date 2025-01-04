@@ -11,9 +11,11 @@ import { ErrorForm } from '@/components/UI/Error/Error';
 import { TextArea } from '@/components/UI/TextArea/TextArea';
 import { LoadingButton } from '@/components/UI/Loading/Loading';
 
-import { postReview } from '@/API/API';
+import { ReviewService } from '@/api/services/review-service';
 
 import { useRequiredAuth } from '@/hooks/useRequiredAuth';
+
+import { catchError } from '@/helpers/catchError';
 
 import './ReviewForm.scss';
 
@@ -25,7 +27,7 @@ type ReviewFormProps = {
 
 export const ReviewForm = () => {
   const { id } = useParams();
-  const client = useQueryClient();
+  const queryClient = useQueryClient();
   const authCheck = useRequiredAuth();
 
   const {
@@ -37,15 +39,15 @@ export const ReviewForm = () => {
   } = useForm<ReviewFormProps>();
 
   const { mutate, isPending } = useMutation({
-    mutationFn: (review: CreateReviewType) => postReview(review),
+    mutationFn: (review: CreateReviewType) => ReviewService.create(review),
     onSuccess: (res) => {
-      client.invalidateQueries({ queryKey: ['product'] });
-      client.invalidateQueries({ queryKey: ['reviews'] });
+      queryClient.invalidateQueries({ queryKey: ['product'] });
+      queryClient.invalidateQueries({ queryKey: ['reviews'] });
       reset();
       toast.success(res.message);
     },
     onError: (error) => {
-      toast.error(error?.response?.data?.message);
+      toast.error(catchError(error));
     },
   });
 

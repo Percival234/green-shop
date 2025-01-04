@@ -5,12 +5,12 @@ import { Title } from '@/components/UI/Title/Title';
 import { ErrorServer } from '@/components/UI/Error/Error';
 import { LoadingPage } from '@/components/UI/Loading/Loading';
 
-import { getCategories } from '@/API/API';
+import { CategoryService } from '@/api/services/category-service';
 
 export const FilterCategory = () => {
   const { data, isPending, error } = useQuery({
     queryKey: ['category'],
-    queryFn: getCategories,
+    queryFn: CategoryService.getMany,
   });
 
   if (isPending) return <LoadingPage />;

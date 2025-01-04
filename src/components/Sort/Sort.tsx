@@ -12,7 +12,7 @@ import { SORT_ORDERS } from '@/constants/SORT_ORDERS';
 import './Sort.scss';
 
 export const Sort = () => {
-  const client = useQueryClient();
+  const queryClient = useQueryClient();
   const [isVisible, setIsVisible] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const toggle = useEventStore((state) => state.toggle);
@@ -29,7 +29,7 @@ export const Sort = () => {
 
       return prev;
     });
-    client.invalidateQueries({ queryKey: ['products'] });
+    queryClient.invalidateQueries({ queryKey: ['products'] });
   };
 
   const handleSortVisible = () => setIsVisible(!isVisible);

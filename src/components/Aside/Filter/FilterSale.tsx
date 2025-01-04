@@ -5,7 +5,7 @@ import { Title } from '@/components/UI/Title/Title';
 
 export const FilterSale = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const client = useQueryClient();
+  const queryClient = useQueryClient();
 
   const handleIsSale = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchParams((prev) => {
@@ -17,7 +17,7 @@ export const FilterSale = () => {
       prev.delete('page');
       return prev;
     });
-    client.invalidateQueries({ queryKey: ['products'] });
+    queryClient.invalidateQueries({ queryKey: ['products'] });
   };
 
   return (

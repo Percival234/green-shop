@@ -1,0 +1,24 @@
+.review-menu {
+  position: relative;
+}
+
+.review-menu__menu {
+  display: grid;
+  position: absolute;
+  top: 10%;
+  right: 110%;
+  background: var(--clr-white);
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.review-menu__menu-button {
+  padding: 8px 15px;
+  background: transparent;
+  color: var(--clr-gray);
+  &:hover,
+  &:active {
+    background: var(--clr-primary-light);
+    color: var(--clr-primary-dark);
+  }
+}

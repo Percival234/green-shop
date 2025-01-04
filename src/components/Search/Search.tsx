@@ -8,7 +8,7 @@ import { useDebounce } from '@/hooks/useDebounce';
 import './Search.scss';
 
 export const Search = () => {
-  const client = useQueryClient();
+  const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get('search') || '');
   const debouncedSearch = useDebounce<string>(search, 500);
@@ -23,8 +23,8 @@ export const Search = () => {
       return prev;
     });
     searchParams.delete('page');
-    client.invalidateQueries({ queryKey: ['products'] });
-  }, [debouncedSearch, client, setSearchParams, searchParams]);
+    queryClient.invalidateQueries({ queryKey: ['products'] });
+  }, [debouncedSearch, queryClient, setSearchParams, searchParams]);
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => setSearch(event.target.value);
 

@@ -5,12 +5,12 @@ import { Title } from '@/components/UI/Title/Title';
 import { ErrorServer } from '@/components/UI/Error/Error';
 import { LoadingPage } from '@/components/UI/Loading/Loading';
 
-import { getSizes } from '@/API/API';
+import { SizeService } from '@/api/services/size-service';
 
 export const FilterSize = () => {
   const { data, isPending, error } = useQuery({
     queryKey: ['size'],
-    queryFn: getSizes,
+    queryFn: SizeService.getMany,
   });
 
   if (isPending) return <LoadingPage />;

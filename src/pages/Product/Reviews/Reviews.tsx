@@ -6,7 +6,7 @@ import { LoadingLocal } from '@/components/UI/Loading/Loading';
 import { ReviewList } from '@/components/Reviews/ReviewList/ReviewList';
 import { ReviewForm } from '@/components/Reviews/ReviewForm/ReviewForm';
 
-import { getReviews } from '@/API/API';
+import { ReviewService } from '@/api/services/review-service';
 
 import './Reviews.scss';
 
@@ -15,7 +15,7 @@ export const Reviews = () => {
 
   const { data, isPending, error } = useQuery({
     queryKey: ['reviews', id],
-    queryFn: () => getReviews(String(id)),
+    queryFn: () => ReviewService.getMany(String(id)),
   });
 
   if (isPending) return <LoadingLocal />;

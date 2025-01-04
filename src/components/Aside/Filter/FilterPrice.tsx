@@ -8,7 +8,7 @@ import { Button } from '@/components/UI/Button/Button';
 import { MIN_PRICE_VALUE, MAX_PRICE_VALUE, PRICE_RANGE_STEP } from '@/constants/PRICE_RANGE';
 
 export const FilterPrice = () => {
-  const client = useQueryClient();
+  const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();
   const [minPrice, setMinPrice] = useState(searchParams.get('minPrice') || MIN_PRICE_VALUE);
   const [maxPrice, setMaxPrice] = useState(searchParams.get('maxPrice') || MAX_PRICE_VALUE);
@@ -37,7 +37,7 @@ export const FilterPrice = () => {
 
       return prev;
     });
-    client.invalidateQueries({ queryKey: ['products'] });
+    queryClient.invalidateQueries({ queryKey: ['products'] });
   };
 
   return (

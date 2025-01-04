@@ -4,15 +4,16 @@ import { Link } from '@/components/UI/Link/Link';
 import { Logo } from '@/components/UI/Logo/Logo';
 import { Button } from '@/components/UI/Button/Button';
 
-import { useUserStore } from '@/store/userStore';
 import { useCartStore } from '@/store/cartStore';
 import { useEventStore } from '@/store/eventStore';
+
+import { useUser } from '@/hooks/useUser';
 
 import './Header.scss';
 
 export const Header = () => {
   const open = useEventStore((state) => state.open);
-  const isAuth = useUserStore((state) => state.isAuth);
+  const { data: user } = useUser();
   const cartItems = useCartStore((state) => state.cartItems);
 
   const openAuthModal = () => open('authModal');
@@ -39,7 +40,7 @@ export const Header = () => {
               <FiShoppingCart />
             </Link>
           </div>
-          {isAuth ? (
+          {user ? (
             <>
               <Link
                 size="icon"

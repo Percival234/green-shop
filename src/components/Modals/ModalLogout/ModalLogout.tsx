@@ -1,15 +1,27 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
 import { Modal } from '@/components/UI/Modal/Modal';
 import { Title } from '@/components/UI/Title/Title';
 
-import { useUserStore } from '@/store/userStore';
+import { AuthService } from '@/api/services/auth-service';
 
 import './ModalLogout.scss';
 
 export const ModalLogout = () => {
-  const logout = useUserStore((state) => state.logout);
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation({
+    mutationFn: AuthService.logout,
+    onSuccess: () => {
+      AuthService.removeToken();
+      queryClient.setQueryData(['user'], null);
+      queryClient.setQueryData(['wishlist'], null);
+      queryClient.invalidateQueries({ queryKey: ['user', 'wishlist'] });
+    },
+  });
 
   return (
-    <Modal name="logoutModal" cancel confirm={logout}>
+    <Modal name="logoutModal" cancel confirm={() => mutate()}>
       <div className="logout-modal">
         <Title size="medium" centered>
           Logout

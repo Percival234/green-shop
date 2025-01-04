@@ -25,7 +25,7 @@ export const ProductInfo: React.FC<ProductProps> = ({ product }) => {
     quantity,
     category,
     description,
-    reviewsLength,
+    reviewsCount,
   } = product;
 
   return (
@@ -42,7 +42,7 @@ export const ProductInfo: React.FC<ProductProps> = ({ product }) => {
           </div>
           <div className="product-info__rating-info">
             <Rating number rating={rating} />
-            <div>{reviewsLength} Reviews</div>
+            <div>{reviewsCount} Reviews</div>
           </div>
         </div>
         <Title tag="h2" size="medium">

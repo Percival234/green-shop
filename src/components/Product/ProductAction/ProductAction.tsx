@@ -9,10 +9,12 @@ import { Button } from '@/components/UI/Button/Button';
 
 import { useCartStore } from '@/store/cartStore';
 
-import { updateWishlist } from '@/API/API';
+import { WishlistService } from '@/api/services/wishlist-service';
 
 import { useWishlist } from '@/hooks/useWishlist';
 import { useRequiredAuth } from '@/hooks/useRequiredAuth';
+
+import { catchError } from '@/helpers/catchError';
 
 import './ProductAction.scss';
 
@@ -21,14 +23,14 @@ type ProductActionProps = {
 };
 
 export const ProductAction: React.FC<ProductActionProps> = ({ product }) => {
-  const client = useQueryClient();
+  const queryClient = useQueryClient();
   const checkAuth = useRequiredAuth();
   const [counter, setCounter] = useState(1);
   const { data: wishlist } = useWishlist();
   const { cartItems, addToCart, removeFromCart } = useCartStore((state) => state);
 
   const inCart = cartItems.some((item) => item.product._id === product._id);
-  const inWishlist = wishlist ? wishlist.products.some((prod) => prod._id === product._id) : [];
+  const inWishlist = wishlist ? wishlist.products.some((prod) => prod._id === product._id) : false;
 
   const increaseCount = () => setCounter(counter + 1);
   const decreaseCount = () => setCounter(counter - 1);
@@ -41,15 +43,15 @@ export const ProductAction: React.FC<ProductActionProps> = ({ product }) => {
   const handleRemoveFromCart = () => removeFromCart(product._id);
 
   const { mutate } = useMutation({
-    mutationFn: (id: string) => updateWishlist(id),
+    mutationFn: (id: string) => WishlistService.update(id),
     onSuccess: () => {
-      client.invalidateQueries({ queryKey: ['wishlist'] });
+      queryClient.invalidateQueries({ queryKey: ['wishlist'] });
       if (!inWishlist) {
         toast.success('Added to wishlist!');
       }
     },
     onError: (error) => {
-      toast.error(error?.response?.data?.message);
+      toast.error(catchError(error));
     },
   });
 

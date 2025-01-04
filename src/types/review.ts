@@ -1,4 +1,4 @@
-type ReviewUserType = {
+export type ReviewUserType = {
   _id: string;
   firstname: string;
   lastname: string;

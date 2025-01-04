@@ -9,12 +9,13 @@ import { ErrorForm } from '@/components/UI/Error/Error';
 import { Input, InputPass } from '@/components/UI/Input/Input';
 import { LoadingButton } from '@/components/UI/Loading/Loading';
 
-import { registerUser } from '@/API/API';
+import { AuthService } from '@/api/services/auth-service';
 
-import { useUserStore } from '@/store/userStore';
 import { useEventStore } from '@/store/eventStore';
 
 import { REGEX_EMAIL } from '@/constants/EMAIL_REGEX';
+
+import { catchError } from '@/helpers/catchError';
 
 type RegisterFormProps = {
   registerEmail: string;
@@ -23,9 +24,8 @@ type RegisterFormProps = {
 };
 
 export const Register = () => {
-  const queryClient = useQueryClient();
+  const queryqueryClient = useQueryClient();
   const close = useEventStore((state) => state.close);
-  const setIsAuth = useUserStore((state) => state.setIsAuth);
   const {
     register,
     handleSubmit,
@@ -34,14 +34,13 @@ export const Register = () => {
   } = useForm<RegisterFormProps>();
 
   const { mutate, isPending } = useMutation({
-    mutationFn: (credentials: CredentialsType) => registerUser(credentials),
-    onSuccess: (res) => {
-      setIsAuth(res?.token);
-      queryClient.invalidateQueries({ queryKey: ['user'] });
+    mutationFn: (credentials: CredentialsType) => AuthService.register(credentials),
+    onSuccess: () => {
+      queryqueryClient.invalidateQueries({ queryKey: ['user'] });
       close('authModal');
     },
     onError: (error) => {
-      toast.error(error?.response?.data?.message);
+      toast.error(catchError(error));
     },
   });
 

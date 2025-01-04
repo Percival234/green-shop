@@ -8,14 +8,14 @@ import { LoadingPage } from '@/components/UI/Loading/Loading';
 import { Pagination } from '@/components/Pagination/Pagination';
 import { ProductList } from '@/components/Product/ProductList/ProductList';
 
-import { getProducts } from '@/API/API';
+import { ProductService } from '@/api/services/product-service';
 
 import './Shop.scss';
 
 export const Shop = () => {
   const { data, isPending, isFetching, error } = useQuery({
     queryKey: ['products'],
-    queryFn: getProducts,
+    queryFn: ProductService.getMany,
     refetchOnMount: true,
   });
 

@@ -15,13 +15,16 @@ import { LoadingButton } from '@/components/UI/Loading/Loading';
 import { CheckoutList } from '@/components/Checkout/CheckoutList/CheckoutList';
 import { CartCalculation } from '@/components/Cart/CartCalculation/CartCalculation';
 
-import { postOrder } from '@/API/API';
+import { OrderService } from '@/api/services/order-service';
 
 import { REGEX_EMAIL } from '@/constants/EMAIL_REGEX';
 
+import { useUser } from '@/hooks/useUser';
+
 import { useCartStore } from '@/store/cartStore';
-import { useUserStore } from '@/store/userStore';
 import { useEventStore } from '@/store/eventStore';
+
+import { catchError } from '@/helpers/catchError';
 
 import './Checkout.scss';
 
@@ -37,7 +40,7 @@ type OrderFormProps = {
 export const Checkout = () => {
   const navigate = useNavigate();
 
-  const user = useUserStore((state) => state.user);
+  const { data: user } = useUser();
   const open = useEventStore((state) => state.open);
 
   const {
@@ -49,7 +52,7 @@ export const Checkout = () => {
   const { cartItems, totalPrice, shipping, payment, clearCart } = useCartStore((state) => state);
 
   const { mutate, isPending } = useMutation({
-    mutationFn: (data: CreateOrderType) => postOrder(data),
+    mutationFn: (data: CreateOrderType) => OrderService.create(data),
     onSuccess: (res) => {
       navigate('/');
       clearCart();
@@ -57,7 +60,7 @@ export const Checkout = () => {
       toast.success(res.message);
     },
     onError(error) {
-      toast.error(error?.response?.data?.message);
+      toast.error(catchError(error));
     },
   });
 

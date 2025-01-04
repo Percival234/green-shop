@@ -1,19 +1,18 @@
-import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
+import { LoadingPage } from '@/components/UI/Loading/Loading';
 import { AccountMenu } from '@/components/Account/AccountMenu/AccountMenu';
 
-import { useUserStore } from '@/store/userStore';
+import { useUser } from '@/hooks/useUser';
 
 import './Account.scss';
 
 export const Account = () => {
   const navigate = useNavigate();
-  const user = useUserStore((state) => state.user);
+  const { data: user, isPending } = useUser();
 
-  useEffect(() => {
-    if (!user) navigate('/');
-  }, [user, navigate]);
+  if (isPending) return <LoadingPage />;
+  if (!user) navigate('/');
 
   return (
     <div className="account">
