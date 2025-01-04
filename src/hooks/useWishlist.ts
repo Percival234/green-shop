@@ -9,6 +9,6 @@ export const useWishlist = () => {
   return useQuery({
     queryKey: ['wishlist'],
     queryFn: WishlistService.getUserWishlist,
-    enabled: !!user,
+    enabled: user ? true : false,
   });
 };
