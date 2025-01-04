@@ -39,7 +39,13 @@ export const AccountPersonal = () => {
   } = useForm<PersonalFormProps>();
 
   const { mutate, isPending } = useMutation({
-    mutationFn: (userData: UpdateUserType) => UserService.update(userData),
+    mutationFn: (userData: UpdateUserType) => {
+      if (!user?._id) {
+        throw new Error('User ID is missing');
+      }
+      return UserService.update(user._id, userData);
+    },
+
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['user'] });
       toast.success(data.message);

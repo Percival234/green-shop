@@ -14,6 +14,8 @@ import { UserService } from '@/api/services/user-service';
 
 import { catchError } from '@/helpers/catchError';
 
+import { useUser } from '@/hooks/useUser';
+
 type PasswordFormProps = {
   newPassword: string;
   newPasswordConfirm: string;
@@ -28,9 +30,15 @@ export const AccountPassword = () => {
     watch,
     reset,
   } = useForm<PasswordFormProps>();
+  const { data: user } = useUser();
 
   const { mutate, isPending } = useMutation({
-    mutationFn: (userData: UpdatePasswordType) => UserService.update(userData),
+    mutationFn: (userData: UpdatePasswordType) => {
+      if (!user?._id) {
+        throw new Error('User ID is missing');
+      }
+      return UserService.update(user._id, userData);
+    },
     onSuccess: (res) => {
       queryClient.invalidateQueries({ queryKey: ['user'] });
       reset();
@@ -45,6 +53,10 @@ export const AccountPassword = () => {
     const userData = {
       password: newPassword,
     };
+    if (!user?._id) {
+      toast.error('User ID is missing');
+      return;
+    }
     mutate(userData);
   };
 

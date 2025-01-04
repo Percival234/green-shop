@@ -42,7 +42,7 @@ export const Wishlist = () => {
       </Title>
       <ProductList products={wishlist?.products} />
       <div className="wishlist__button">
-        {!!wishlist.products?.length && (
+        {wishlist?.products?.length > 0 && (
           <Button variant="outline" onClick={deleteWishlist}>
             Remove all
           </Button>

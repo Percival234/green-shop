@@ -10,13 +10,20 @@ import { AuthService } from '@/api/services/auth-service';
 
 import { catchError } from '@/helpers/catchError';
 
+import { useUser } from '@/hooks/useUser';
+
 import './ModalUserDelete.scss';
 
 export const ModalUserDelete = () => {
   const queryClient = useQueryClient();
-
+  const { data: user } = useUser();
   const { mutate, isPending } = useMutation({
-    mutationFn: UserService.delete,
+    mutationFn: () => {
+      if (!user?._id) {
+        throw new Error('User ID is missing');
+      }
+      return UserService.delete(user._id);
+    },
     onSuccess: () => {
       AuthService.removeToken();
       queryClient.setQueryData(['user'], null);
