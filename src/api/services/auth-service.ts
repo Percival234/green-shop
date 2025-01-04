@@ -48,8 +48,6 @@ export class AuthService {
 
   static saveToken(token: string) {
     Cookies.set('access_token', token, {
-      domain: 'localhost',
-      sameSite: 'strict',
       expires: new Date(new Date().getTime() + 30 * 60 * 1000),
     });
   }

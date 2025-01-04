@@ -49,7 +49,7 @@ axiosWithAuth.interceptors.response.use(
       if (
         (error?.response?.status === 401 ||
           catchError(error) === 'jwt expired' ||
-          catchError(error) === 'Token is missing') &&
+          catchError(error) === 'jwt must be provided') &&
         error.config &&
         !error.config._retry
       ) {
