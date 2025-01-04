@@ -25,7 +25,10 @@ export type OrderType = {
   updatedAt: Date;
 };
 
-export type CreateOrderType = Omit<OrderType, '_id' | 'createdAt' | 'updatedAt' | 'cartItems'> & {
+export type CreateOrderType = Omit<
+  OrderType,
+  '_id' | 'createdAt' | 'updatedAt' | 'cartItems' | 'status'
+> & {
   cartItems: {
     count: number;
     product: string;

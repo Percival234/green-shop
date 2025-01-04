@@ -39,7 +39,6 @@ type OrderFormProps = {
 
 export const Checkout = () => {
   const navigate = useNavigate();
-
   const { data: user } = useUser();
   const open = useEventStore((state) => state.open);
 
@@ -84,7 +83,7 @@ export const Checkout = () => {
     checkoutCity,
   }) => {
     const order = {
-      userId: user?._id,
+      userId: user?._id || null,
       firstname: checkoutFirstname,
       lastname: checkoutLastname,
       email: checkoutEmail,
